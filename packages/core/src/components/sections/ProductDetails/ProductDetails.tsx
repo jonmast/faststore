@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from 'react'
 
-import { gql } from '@faststore/graphql-utils'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import { sendAnalyticsEvent } from '@faststore/sdk'
 
+import { gql } from '@generated'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useSession } from 'src/sdk/session'
@@ -236,7 +236,7 @@ function ProductDetails({
   )
 }
 
-export const fragment = gql`
+export const fragment = gql(`
   fragment ProductDetailsFragment_product on StoreProduct {
     id: productID
     sku
@@ -278,6 +278,6 @@ export const fragment = gql`
     # Contains necessary info to add this item to cart
     ...CartProductItem
   }
-`
+`)
 
 export default ProductDetails

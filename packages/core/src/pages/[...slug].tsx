@@ -1,7 +1,7 @@
 import { isNotFoundError } from '@faststore/api'
-import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
+import { gql } from '@generated'
 import type {
   ServerCollectionPageQueryQuery,
   ServerCollectionPageQueryQueryVariables,
@@ -51,7 +51,7 @@ function Page({ globalSections, type, ...otherProps }: Props) {
   )
 }
 
-const query = gql`
+const query = gql(`
   query ServerCollectionPageQuery($slug: String!) {
     ...ServerCollectionPage
     collection(slug: $slug) {
@@ -74,7 +74,7 @@ const query = gql`
       }
     }
   }
-`
+`)
 
 export const getStaticProps: GetStaticProps<
   Props,
@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps<
       ServerCollectionPageQueryQuery
     >({
       variables: { slug },
-      operationName: query,
+      operation: query,
     }),
     getPage<PLPContentType>({
       ...(previewData?.contentType === 'plp' ? previewData : null),

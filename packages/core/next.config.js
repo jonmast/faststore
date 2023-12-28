@@ -6,6 +6,8 @@ const storeConfig = require('./faststore.config')
  * */
 const nextConfig = {
   /* config options here */
+  /* Replaces terser by swc for minifying. It's the default in NextJS 13 */
+  swcMinify: true,
   images: {
     domains: [`${storeConfig.api.storeId}.vtexassets.com`],
     deviceSizes: [360, 540, 768, 1280, 1440],
@@ -21,6 +23,7 @@ const nextConfig = {
   // TODO: We won't need to enable this experimental feature when migrating to Next.js 13
   experimental: {
     scrollRestoration: true,
+    /* TODO: Add the swc @graphql-codegen/client-preset plugin when migrating to Next.js 13 */
   },
   webpack: (config, { isServer, dev }) => {
     // https://github.com/vercel/next.js/discussions/11267#discussioncomment-2479112

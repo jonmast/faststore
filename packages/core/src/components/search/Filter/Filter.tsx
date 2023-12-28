@@ -1,7 +1,8 @@
-import { gql } from '@faststore/graphql-utils'
 import { useUI } from '@faststore/ui'
 import type { Filter_FacetsFragment } from '@generated/graphql'
 import { Suspense } from 'react'
+
+import { gql } from '@generated'
 import { ProductGalleryProps } from 'src/components/ui/ProductGallery/ProductGallery'
 import { useFilter } from 'src/sdk/search/useFilter'
 
@@ -61,7 +62,7 @@ function Filter({
   )
 }
 
-export const fragment = gql`
+export const fragment = gql(`
   fragment Filter_facets on StoreFacet {
     ... on StoreFacetRange {
       key
@@ -92,6 +93,6 @@ export const fragment = gql`
       __typename
     }
   }
-`
+`)
 
 export default Filter
